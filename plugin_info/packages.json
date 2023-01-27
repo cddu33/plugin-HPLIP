@@ -1,7 +1,8 @@
 {
   "pre-install": {
   },
-  "apt": { hplip
+  "apt": { 
+    "hplip" : {}
   },
   "pip3": {
   },
