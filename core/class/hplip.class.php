@@ -35,10 +35,30 @@ class hplip extends eqLogic {
 
   /*     * ***********************Methode static*************************** */
 
-  /*
-  * Fonction exécutée automatiquement toutes les minutes par Jeedom
-  public static function cron() {}
-  */
+  public static function cron() {
+		$dateRun = new DateTime();
+		foreach (self::byType('hplip', true) as $eqLogic) {
+			$autorefresh = $eqLogic->getConfiguration('autorefresh');
+			if ($eqLogic->getIsEnable() == 1){
+				if ($autorefresh == '') {
+					$autorefresh = '*/5 * * * *';
+				}
+				try {
+					$c = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
+					if ($c->isDue($dateRun)) {
+						try {
+							$eqLogic->refresh();
+						} catch (Exception $exc) {
+							log::add('hplip', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
+						}
+					}
+				} 
+				catch (Exception $exc) {
+					log::add('hplip', 'error', __('Expression cron non valide pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $autorefresh);
+				}
+			}
+		}
+	}
 
   /*
   * Fonction exécutée automatiquement toutes les 5 minutes par Jeedom
@@ -82,6 +102,9 @@ class hplip extends eqLogic {
 
   // Fonction exécutée automatiquement avant la mise à jour de l'équipement
   public function preUpdate() {
+    if ($this->getConfiguration('ip') == '') {
+			throw new Exception('L\'adresse IP ne peut pas être vide');
+	 	}
   }
 
   // Fonction exécutée automatiquement après la mise à jour de l'équipement
@@ -94,10 +117,26 @@ class hplip extends eqLogic {
 
   // Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
   public function postSave() {
+    $hplipCmd = $this->getCmd(null, 'refresh');
+		if (!is_object($hplipCmd)) {
+			$hplipCmd = new hplipCmd();
+		  	$hplipCmd->setName(__('Rafraichir', __FILE__));
+	  	}
+	  	$hplipCmd->setEqLogic_id($this->getId());
+	  	$hplipCmd->setLogicalId('refresh');
+	  	$hplipCmd->setType('action');
+	  	$hplipCmd->setSubType('other');
+	  	$hplipCmd->save();
+
+      passthru('hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
+
+
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
   public function preRemove() {
+    passthru('hp-setup -i -a -r ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
+
   }
 
   // Fonction exécutée automatiquement après la suppression de l'équipement

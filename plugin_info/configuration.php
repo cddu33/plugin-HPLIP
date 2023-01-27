@@ -22,15 +22,3 @@ if (!isConnect()) {
   die();
 }
 ?>
-<form class="form-horizontal">
-  <fieldset>
-    <div class="form-group">
-      <label class="col-md-4 control-label">{{Adresse IP de l'imprimante}}
-        <sup><i class="fas fa-question-circle tooltips" title="{{Adresse IP de l'imprimante}}"></i></sup>
-      </label>
-      <div class="col-md-4">
-        <input class="configKey form-control" data-l1key="ip"/>
-      </div>
-    </div>
-  </fieldset>
-</form>
