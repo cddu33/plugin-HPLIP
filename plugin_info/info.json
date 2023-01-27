@@ -1,5 +1,5 @@
 {
-	"id" : "hplink",
+	"id" : "hplip",
 	"name" : "Imprimantes HP",
 	"description" : {
 		"fr_FR": "Plugin permetant de se connecter aux imprimantes de marque HP, récupération du niveau d encre."
