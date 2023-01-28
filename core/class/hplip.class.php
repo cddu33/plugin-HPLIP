@@ -120,7 +120,7 @@ class hplip extends eqLogic {
     $hplipCmd = $this->getCmd(null, 'refresh');
 		if (!is_object($hplipCmd)) {
 			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Rafraichir', __FILE__))
+		  $hplipCmd->setName(__('Rafraichir', __FILE__));
       $hplipCmd->setEqLogic_id($this->getId());
       $hplipCmd->setLogicalId('refresh');
       $hplipCmd->setType('action');
@@ -134,7 +134,7 @@ class hplip extends eqLogic {
       $this->setConfiguration('installer', 'OK');
     }
   }
-  
+
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
   public function preRemove() {
