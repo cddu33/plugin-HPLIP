@@ -134,6 +134,7 @@ class hplip extends eqLogic {
       $this->setConfiguration('installer', 'OK');
     }
   }
+  
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
   public function preRemove() {
