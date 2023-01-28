@@ -132,6 +132,7 @@ class hplip extends eqLogic {
       passthru('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
 
       $this->setConfiguration('installer', 'OK');
+      $this->save();
     }
   }
 
