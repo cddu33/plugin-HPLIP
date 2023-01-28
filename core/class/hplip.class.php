@@ -146,7 +146,13 @@ class hplip extends eqLogic {
   // Fonction exécutée automatiquement après la suppression de l'équipement
   public function postRemove() {
   }
-
+  public function refresh() {
+		//log::add('hplip', 'debug', 'test ');
+		$hplip_ip = $this->getConfiguration('ip');
+		$hplip_cmd = 'hp-info ' . $hplip_ip . " -i";
+		log::add('hplip', 'info', 'Commande refresh: ' . $hplip_cmd);
+		exec($hplip_cmd . ' >> ' . log::getPathToLog('hplip') . ' 2>&1 &');
+	}
   /*
   * Permet de crypter/décrypter automatiquement des champs de configuration des équipements
   * Exemple avec le champ "Mot de passe" (password)
@@ -205,6 +211,7 @@ class hplipCmd extends cmd {
 
   // Exécution d'une commande
   public function execute($_options = array()) {
+    $eqlogic->refresh();
   }
 
   /*     * **********************Getteur Setteur*************************** */
