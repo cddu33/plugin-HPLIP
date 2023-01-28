@@ -127,6 +127,16 @@ class hplip extends eqLogic {
       $hplipCmd->setSubType('other');
       $hplipCmd->save();
 	  }
+    $hplipCmd = $this->getCmd(null, 'test');
+		if (!is_object($hplipCmd)) {
+			$hplipCmd = new hplipCmd();
+		  $hplipCmd->setName(__('Test', __FILE__));
+      $hplipCmd->setEqLogic_id($this->getId());
+      $hplipCmd->setLogicalId('test');
+      $hplipCmd->setType('info');
+      $hplipCmd->setSubType('string');
+      $hplipCmd->save();
+	  }
     if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
       
       passthru('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_install') . ' 2>&1 &');
