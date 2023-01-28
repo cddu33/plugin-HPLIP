@@ -129,7 +129,7 @@ class hplip extends eqLogic {
 	  }
     if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
       
-      passthru('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__) . ' _instal 2>&1 &');
+      passthru('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_install') . ' 2>&1 &');
 
       $this->setConfiguration('installer', 'OK');
       $this->save();
@@ -139,7 +139,7 @@ class hplip extends eqLogic {
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
   public function preRemove() {
-    passthru('sudo hp-setup -i -a -r ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__) . ' _instal 2>&1 &');
+    passthru('sudo hp-setup -i -a -r ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_install') . ' 2>&1 &');
 
   }
 
