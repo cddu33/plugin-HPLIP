@@ -128,11 +128,11 @@ $eqLogics = eqLogic::byType($plugin->getId());
 
 							<legend><i class="fas fa-cogs"></i> {{Paramètres}}</legend>
 							<div class="form-group">
-								<label class="col-sm-4 control-label">{{Adresse IP}}}
+								<label class="col-sm-4 control-label">{{Adresse IP}}
 									<sup><i class="fas fa-question-circle tooltips" title="{{Renseignez l'adresse IP de l'imprimante}}"></i></sup>
 								</label>
 								<div class="col-sm-6">
-									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{Paramètre n°1}}">
+									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip" placeholder="{{XXX.XXX.XXX.XXX}}">
 								</div>
 							</div>
 							<!-- Exemple de champ de saisie du cron d'auto-actualisation avec assistant -->

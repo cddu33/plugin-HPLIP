@@ -128,14 +128,14 @@ class hplip extends eqLogic {
 	  	$hplipCmd->setSubType('other');
 	  	$hplipCmd->save();
 
-      passthru('hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
+      passthru('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
 
 
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
   public function preRemove() {
-    passthru('hp-setup -i -a -r ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
+    passthru('sudo hp-setup -i -a -r ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
 
   }
 
