@@ -156,7 +156,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								<label class="col-sm-4 control-label">{{Imprimante installée: }}	
 								</label>
 								<div class="col-sm-6">
-									<textarea class="form-control eqLogicAttr" data-l1key="configuration" data-l2key="installer" placeholder="{{NOK}}></textarea>
+									<textarea class="form-control eqLogicAttr" data-l1key="configuration" data-l2key="installer" placeholder="{{NOK}}"></textarea>
 								</div>
 							</div>
 						</div>
