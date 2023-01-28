@@ -121,6 +121,9 @@ class hplip extends eqLogic {
 		if (!is_object($hplipCmd)) {
 			$hplipCmd = new hplipCmd();
 		  	$hplipCmd->setName(__('Rafraichir', __FILE__));
+        
+        passthru('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
+
 	  	}
 	  	$hplipCmd->setEqLogic_id($this->getId());
 	  	$hplipCmd->setLogicalId('refresh');
@@ -128,8 +131,7 @@ class hplip extends eqLogic {
 	  	$hplipCmd->setSubType('other');
 	  	$hplipCmd->save();
 
-      passthru('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
-
+      
 
   }
 
