@@ -138,11 +138,15 @@ class hplip extends eqLogic {
       $hplipCmd->save();
 	  }
     if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
-      
-      passthru('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_install') . ' 2>&1 &');
+      if (grep(exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_install') . ' 2>&1 &'), 'PRINTER TEST PAGE')===1) {
+        $this->setConfiguration('installer', 'OK');
+        $this->save();
+      }
+      else{
+        log::add('hplip', 'error', 'Problème lors de l\installation de l\'imprimante, vérifier qu\'elle est bien alimentée et que l\'adresse IP rentrée dans le plugin est valide');
+      }
 
-      $this->setConfiguration('installer', 'OK');
-      $this->save();
+    
     }
   }
 
