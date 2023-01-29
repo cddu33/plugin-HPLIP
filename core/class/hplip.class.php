@@ -162,7 +162,7 @@ class hplip extends eqLogic {
   public function postRemove() {
   }
   public function refresh() {
-    set_time_limit(30);
+    set_time_limit(60);
 		//log::add('hplip', 'debug', 'test ');
 		$hplip_ip = $this->getConfiguration('ip');
 		$hplip_cmd = 'hp-info -i';
