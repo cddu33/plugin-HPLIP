@@ -140,7 +140,7 @@ class hplip extends eqLogic {
     if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
       set_time_limit(10);
 
-        $installation=exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . '& 1 | grep TEST');
+        $installation=exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' && 1 | grep TEST');
       if ($installation!="") {
         $this->setConfiguration('installer', 'OK');
         $this->save();
@@ -154,7 +154,7 @@ class hplip extends eqLogic {
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
   public function preRemove() {
-    passthru('sudo hp-setup -i -a -r ' . hplip::getConfiguration("ip") . ' && 1');
+    passthru('sudo hp-setup -i -a -r ' . hplip::getConfiguration("ip") .);
     log::add('hplip', 'info', 'Imprimante désinstallée');
   }
 
