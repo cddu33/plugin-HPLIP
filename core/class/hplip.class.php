@@ -140,7 +140,7 @@ class hplip extends eqLogic {
     if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
       set_time_limit(10);
       try{
-        $installation=exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' | grep TEST')
+        $installation=exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' | grep TEST');
       }
       catch (Exception $e) {
         log::add('hplip', 'error', 'Problème lors de l\'installation de l\'imprimante, vérifier qu\'elle est bien alimentée et que l\'adresse IP rentrée dans le plugin est valide');
