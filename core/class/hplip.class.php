@@ -291,7 +291,7 @@ class hplip extends eqLogic {
 		exec($hplip_cmd);
 
     $hplip_data = exec('grep agent1-desc '. $hplip_dir);
-    $this->checkAndUpdateCmd('ink1type', $hplip_data)
+    $this->checkAndUpdateCmd('ink1type', $hplip_data);
     log::add('hplip', 'debug', 'Agent1: '. $hplip_data);
 	}
   /*
