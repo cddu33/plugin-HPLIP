@@ -138,7 +138,7 @@ class hplip extends eqLogic {
       $hplipCmd->save();
 	  }
     if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
-      if (exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_install') . ' 2>&1 & | grep PRINTER TEST PAGE')===1) {
+      if (exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_install') . ' 2>&1 & | grep TEST')!="") {
         $this->setConfiguration('installer', 'OK');
         $this->save();
       }
