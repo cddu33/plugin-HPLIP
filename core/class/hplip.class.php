@@ -141,20 +141,19 @@ class hplip extends eqLogic {
       if (exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' | grep TEST')!="") {
         $this->setConfiguration('installer', 'OK');
         $this->save();
+        log::add('hplip', 'info', 'Imprimante Installée');
       }
       else{
         log::add('hplip', 'error', 'Problème lors de l\'installation de l\'imprimante, vérifier qu\'elle est bien alimentée et que l\'adresse IP rentrée dans le plugin est valide');
       }
-
-    
     }
   }
 
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
   public function preRemove() {
-    passthru('sudo hp-setup -i -a -r ' . hplip::getConfiguration("ip") . ' '. jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_install') . ' 2>&1 &');
-
+    passthru('sudo hp-setup -i -a -r ' . hplip::getConfiguration("ip"));
+    log::add('hplip', 'info', 'Imprimante désinstallé');
   }
 
   // Fonction exécutée automatiquement après la suppression de l'équipement
