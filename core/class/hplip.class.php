@@ -154,7 +154,7 @@ class hplip extends eqLogic {
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
   public function preRemove() {
-    passthru('sudo hp-setup -i -a -r ' . hplip::getConfiguration("ip") . ' | 1');
+    passthru('sudo hp-setup -i -a -r ' . hplip::getConfiguration("ip") . ' && 1');
     log::add('hplip', 'info', 'Imprimante désinstallée');
   }
 
