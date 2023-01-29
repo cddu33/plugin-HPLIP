@@ -165,11 +165,9 @@ class hplip extends eqLogic {
     set_time_limit(60);
 		//log::add('hplip', 'debug', 'test ');
 		$hplip_ip = $this->getConfiguration('ip');
-		$hplip_cmd = 'hp-info -i';
+		$hplip_cmd = 'hp-info -i > ' . realpath(dirname(__FILE__)) .'/../../data/infos.txt';
 		log::add('hplip', 'info', 'Commande refresh');
-		exec($hplip_cmd, $result);
-    log::add('hplip', 'debug', $result);
-    $this->checkAndUpdateCmd('test', $result);
+		exec($hplip_cmd);
 	}
   /*
   * Permet de crypter/décrypter automatiquement des champs de configuration des équipements
