@@ -290,7 +290,7 @@ class hplip extends eqLogic {
 		log::add('hplip', 'info', 'Commande refresh');
 		exec($hplip_cmd);
 
-    $hplip_data = str_replace(exec('grep agent1-desc '. $hplip_dir), "agent1-desc ");
+    $hplip_data = str_replace(exec('grep agent1-desc '. $hplip_dir), 'agent1-desc ');
     $this->checkAndUpdateCmd('ink1type', $hplip_data);
     log::add('hplip', 'debug', 'Agent1: '. $hplip_data);
 	}
