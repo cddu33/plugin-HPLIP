@@ -138,7 +138,7 @@ class hplip extends eqLogic {
       $hplipCmd->save();
 	  }
     if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
-      set_time_limit(10);
+      
 
         $installation=exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' && 1 | grep TEST');
       if ($installation!="") {
@@ -162,6 +162,7 @@ class hplip extends eqLogic {
   public function postRemove() {
   }
   public function refresh() {
+    set_time_limit(30);
 		//log::add('hplip', 'debug', 'test ');
 		$hplip_ip = $this->getConfiguration('ip');
 		$hplip_cmd = 'hp-info -i';
