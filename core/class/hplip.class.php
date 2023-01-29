@@ -138,8 +138,9 @@ class hplip extends eqLogic {
       $hplipCmd->save();
 	  }
     if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
+      set_time_limit(10);
       if (exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' | grep TEST')!="") {
-        set_time_limit(10);
+        
         $this->setConfiguration('installer', 'OK');
         $this->save();
         log::add('hplip', 'info', 'Imprimante Installée');
