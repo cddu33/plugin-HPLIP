@@ -165,8 +165,9 @@ class hplip extends eqLogic {
 		//log::add('hplip', 'debug', 'test ');
 		$hplip_ip = $this->getConfiguration('ip');
 		$hplip_cmd = 'hp-info -i';
-		log::add('hplip', 'info', 'Commande refresh: ' . $hplip_cmd);
-		$result=exec($hplip_cmd . ' >> ' . log::getPathToLog('hplip') . ' 2>&1 &');
+		log::add('hplip', 'info', 'Commande refresh');
+		$result=exec($hplip_cmd);
+    log::add('hplip', 'debug', $result);
     $this->checkAndUpdateCmd('test', $result);
 	}
   /*
