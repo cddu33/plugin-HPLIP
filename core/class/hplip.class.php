@@ -140,7 +140,7 @@ class hplip extends eqLogic {
     if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
       set_time_limit(10);
 
-        $installation=exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . '| 1 | grep TEST');
+        $installation=exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . '& 1 | grep TEST');
       if ($installation!="") {
         $this->setConfiguration('installer', 'OK');
         $this->save();
