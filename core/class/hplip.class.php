@@ -293,11 +293,11 @@ class hplip extends eqLogic {
     $hplip_sup = array("agent1-desc", " ");
     $hplip_data = str_replace($hplip_sup, "", exec('grep agent1-desc '. $hplip_dir));
     $this->checkAndUpdateCmd('ink1type', $hplip_data);
-    log::add('hplip', 'debug', 'Agent1: '. $hplip_data);
+    //log::add('hplip', 'debug', 'Agent1: '. $hplip_data);
     $hplip_sup = array("agent1-level", " ");
-    $hplip_data = str_replace($hplip_sup, "", exec('grep agent1-level '. $hplip_dir));
+    $hplip_data1 = str_replace($hplip_sup, "", exec('grep agent1-level '. $hplip_dir));
     $this->checkAndUpdateCmd('ink1state', $hplip_data);
-    log::add('hplip', 'debug', 'Agent1: '. $hplip_data);
+    log::add('hplip', 'debug', 'Agent1: '. $hplip_data . ' ' . $hplip_data1);
 
     $hplip_sup = array("agent2-desc", " ");
     $hplip_data = str_replace($hplip_sup, "", exec('grep agent2-desc '. $hplip_dir));
@@ -323,7 +323,7 @@ class hplip extends eqLogic {
     log::add('hplip', 'debug', 'Agent4: '. $hplip_data);
     $hplip_sup = array("agent4-level", " ");
     $hplip_data = str_replace($hplip_sup, "", exec('grep agent4-level '. $hplip_dir));
-    $this->checkAndUpdateCmd('ink4state', $hplip_data);
+    $this->checkAndUpdateCmd('ink4perc', $hplip_data);
     log::add('hplip', 'debug', 'Agent4: '. $hplip_data);
 
     
