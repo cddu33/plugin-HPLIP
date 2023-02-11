@@ -294,6 +294,39 @@ class hplip extends eqLogic {
     $hplip_data = str_replace($hplip_sup, "", exec('grep agent1-desc '. $hplip_dir));
     $this->checkAndUpdateCmd('ink1type', $hplip_data);
     log::add('hplip', 'debug', 'Agent1: '. $hplip_data);
+    $hplip_sup = array("agent1-level", " ");
+    $hplip_data = str_replace($hplip_sup, "", exec('grep agent1-level '. $hplip_dir));
+    $this->checkAndUpdateCmd('ink1state', $hplip_data);
+    log::add('hplip', 'debug', 'Agent1: '. $hplip_data);
+
+    $hplip_sup = array("agent2-desc", " ");
+    $hplip_data = str_replace($hplip_sup, "", exec('grep agent2-desc '. $hplip_dir));
+    $this->checkAndUpdateCmd('ink2type', $hplip_data);
+    log::add('hplip', 'debug', 'Agent2: '. $hplip_data);
+    $hplip_sup = array("agent2-level", " ");
+    $hplip_data = str_replace($hplip_sup, "", exec('grep agent2-level '. $hplip_dir));
+    $this->checkAndUpdateCmd('ink2state', $hplip_data);
+    log::add('hplip', 'debug', 'Agent2: '. $hplip_data);
+
+    $hplip_sup = array("agent3-desc", " ");
+    $hplip_data = str_replace($hplip_sup, "", exec('grep agent3-desc '. $hplip_dir));
+    $this->checkAndUpdateCmd('ink3type', $hplip_data);
+    log::add('hplip', 'debug', 'Agent3: '. $hplip_data);
+    $hplip_sup = array("agent3-level", " ");
+    $hplip_data = str_replace($hplip_sup, "", exec('grep agent3-level '. $hplip_dir));
+    $this->checkAndUpdateCmd('ink3state', $hplip_data);
+    log::add('hplip', 'debug', 'Agent3: '. $hplip_data);
+
+    $hplip_sup = array("agent4-desc", " ");
+    $hplip_data = str_replace($hplip_sup, "", exec('grep agent4-desc '. $hplip_dir));
+    $this->checkAndUpdateCmd('ink4type', $hplip_data);
+    log::add('hplip', 'debug', 'Agent4: '. $hplip_data);
+    $hplip_sup = array("agent4-level", " ");
+    $hplip_data = str_replace($hplip_sup, "", exec('grep agent4-level '. $hplip_dir));
+    $this->checkAndUpdateCmd('ink4state', $hplip_data);
+    log::add('hplip', 'debug', 'Agent4: '. $hplip_data);
+
+    
 	}
   /*
   * Permet de crypter/décrypter automatiquement des champs de configuration des équipements
