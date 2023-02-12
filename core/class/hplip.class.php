@@ -176,10 +176,9 @@ class hplip extends eqLogic {
 
   // Fonction exécutée automatiquement après la suppression de l'équipement
   public function postRemove() {}
-  
+
   public function refresh() {
     set_time_limit(60);
-		//log::add('hplip', 'debug', 'test ');
     $hplip_id = $this->getConfiguration('idimp');
     $hplip_dir = realpath(dirname(__FILE__)) .'/../../data/infos'. $hplip_id . '.txt';
 		$hplip_ip = $this->getConfiguration('ip');
@@ -219,7 +218,7 @@ class hplip extends eqLogic {
         $hplipCmd->setLogicalId('ink1type');
         $hplipCmd->setType('info');
         $hplipCmd->setSubType('string');
-        $hplipCmd->setOrder(5);
+        $hplipCmd->setOrder(4);
         $hplipCmd->save();
       }
       $hplipCmd = $this->getCmd(null, 'ink1state');
@@ -231,7 +230,7 @@ class hplip extends eqLogic {
         $hplipCmd->setType('info');
         $hplipCmd->setSubType('binary');
         $hplipCmd->setConfiguration('invertBinary', '1');
-        $hplipCmd->setOrder(4);
+        $hplipCmd->setOrder(2);
         $hplipCmd->save();
       }
       $hplipCmd = $this->getCmd(null, 'ink1perc');
@@ -275,7 +274,7 @@ class hplip extends eqLogic {
         $hplipCmd->setLogicalId('ink2type');
         $hplipCmd->setType('info');
         $hplipCmd->setSubType('string');
-        $hplipCmd->setOrder(8);
+        $hplipCmd->setOrder(7);
         $hplipCmd->save();
       }
       $hplipCmd = $this->getCmd(null, 'ink2state');
@@ -287,7 +286,7 @@ class hplip extends eqLogic {
         $hplipCmd->setType('info');
         $hplipCmd->setSubType('binary');
         $hplipCmd->setConfiguration('invertBinary', '1');
-        $hplipCmd->setOrder(7);
+        $hplipCmd->setOrder(8);
         $hplipCmd->save();
       }
       $hplipCmd = $this->getCmd(null, 'ink2perc');
@@ -328,7 +327,7 @@ class hplip extends eqLogic {
         $hplipCmd->setLogicalId('ink3type');
         $hplipCmd->setType('info');
         $hplipCmd->setSubType('string');
-        $hplipCmd->setOrder(11);
+        $hplipCmd->setOrder(10);
         $hplipCmd->save();
       }
       $hplipCmd = $this->getCmd(null, 'ink3state');
@@ -340,7 +339,7 @@ class hplip extends eqLogic {
         $hplipCmd->setType('info');
         $hplipCmd->setSubType('binary');
         $hplipCmd->setConfiguration('invertBinary', '1');
-        $hplipCmd->setOrder(10);
+        $hplipCmd->setOrder(11);
         $hplipCmd->save();
       }
       $hplipCmd = $this->getCmd(null, 'ink3perc');
@@ -383,7 +382,7 @@ class hplip extends eqLogic {
         $hplipCmd->setLogicalId('ink4type');
         $hplipCmd->setType('info');
         $hplipCmd->setSubType('string');
-        $hplipCmd->setOrder(14);
+        $hplipCmd->setOrder(13);
         $hplipCmd->save();
       }
       $hplipCmd = $this->getCmd(null, 'ink4state');
@@ -395,7 +394,7 @@ class hplip extends eqLogic {
         $hplipCmd->setType('info');
         $hplipCmd->setSubType('binary');
         $hplipCmd->setConfiguration('invertBinary', '1');
-        $hplipCmd->setOrder(13);
+        $hplipCmd->setOrder(14);
         $hplipCmd->save();
       }
       $hplipCmd = $this->getCmd(null, 'ink4perc');
