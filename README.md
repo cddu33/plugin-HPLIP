@@ -8,6 +8,8 @@ L'actualisation des données peut prendre jusqu'à 30s
 
 > Attention, le paquet HP pour la connexion aux imprimantes est assez conséquent (170Mo)
 
+> Les imprimantes récentes ne seront prises en charges que avec Debian 11
+
 Pour l'installer:
 
 * Activer le plugin
