@@ -13,7 +13,7 @@
 	"maxDependancyInstallTime" : 0,
 	"changelog" : "https://github.com/cddu33/plugin-HPLIP/#language#/changelog",
 	"documentation" : "https://github.com/cddu33/plugin-HPLIP/#language#/",
-	"changelog_beta" : "https://github.com/cddu33/plugin-HPLIP/#language#/beta/changelog",
+	"changelog_beta" : "https://github.com/cddu33/plugin-HPLIP/#language#/changelog",
 	"documentation_beta" : "https://github.com/cddu33/plugin-HPLIP/#language#/",
 	"link" : {
 		"forum":"https://community.jeedom.com/t/hp-instant-ink/39110/"
