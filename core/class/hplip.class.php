@@ -112,9 +112,7 @@ class hplip extends eqLogic {
   }
 
   // Fonction exécutée automatiquement avant la sauvegarde (création ou mise à jour) de l'équipement
-  public function preSave() {
- 
-  }
+  public function preSave() {}
 
   // Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
   public function postSave() {
@@ -155,11 +153,10 @@ class hplip extends eqLogic {
 
     if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
       
-
         $installation=exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' && 2 | grep TEST');
       if ($installation!="") {
         $this->setConfiguration('installer', 'OK');
-        $this->setConfiguration("idimp", time());
+        $this->setConfiguration('idimp', time());
         $this->save();
         log::add('hplip', 'info', 'Imprimante Installée');
         
@@ -178,8 +175,8 @@ class hplip extends eqLogic {
   }
 
   // Fonction exécutée automatiquement après la suppression de l'équipement
-  public function postRemove() {
-  }
+  public function postRemove() {}
+  
   public function refresh() {
     set_time_limit(60);
 		//log::add('hplip', 'debug', 'test ');
