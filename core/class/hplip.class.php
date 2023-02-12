@@ -296,7 +296,7 @@ class hplip extends eqLogic {
     $this->checkAndUpdateCmd('ink1type', $hplip_data);
     
     $hplip_sup = array("agent1-level ", " ");
-    $hplip_data1 = str_replace($hplip_sup, "", exec('grep agent1-level '. $hplip_dir | head -n 1));
+    $hplip_data1 = str_replace($hplip_sup, "", exec('grep agent1-level '. $hplip_dir .' | head -n 1'));
     $this->checkAndUpdateCmd('ink1perc', $hplip_data1);
     
     $hplip_sup = array("agent1-health", " ");
