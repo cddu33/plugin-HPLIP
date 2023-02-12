@@ -243,8 +243,9 @@ class hplip extends eqLogic {
         $hplipCmd->setSubType('numeric');
         $hplipCmd->setConfiguration('minValue', '0');
         $hplipCmd->setConfiguration('maxValue', '100');
-        $hplipCmd->save();
         $hplipCmd->setOrder(6);
+        $hplipCmd->save();
+        
       }
 
       //1
