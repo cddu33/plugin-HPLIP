@@ -1,4 +1,4 @@
-# Plugin hplip
+# Plugin HPlip
 
 Plugin Permettant de se connecter sur les imprimantes de maque HP
 
