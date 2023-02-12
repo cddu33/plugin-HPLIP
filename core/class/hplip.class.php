@@ -187,7 +187,7 @@ class hplip extends eqLogic {
       $hplip_cmd = 'hp-info -i '. '-d ' . $hplip_uri .' > '. $hplip_dir;
     }
 		
-		log::add('hplip', 'debug', 'Commande refresh');
+		log::add('hplip', 'debug', 'Lancement de l\'actuaalisation, environ 30s');
 		exec($hplip_cmd);
     
     if (exec('grep agent1-desc '. $hplip_dir )==null) 
@@ -196,14 +196,15 @@ class hplip extends eqLogic {
       log::add('hplip', 'info', 'Imprimante déconnectée');
       return;
     }
+    log::add('hplip', 'info', 'Imprimante connectée, actualisation des données');
+    $this->checkAndUpdateCmd('state', true);
 
     $hplip_sup = array("model-ui", " ");
     $hplip_data = str_replace($hplip_sup, "", exec('grep model-ui '. $hplip_dir .' | head -n 1'));
     log::add('hplip', 'debug', 'Model: '. $hplip_data);
     $this->checkAndUpdateCmd('model', $hplip_data);
 
-      log::add('hplip', 'info', 'Imprimante connectée, actualisation des données');
-      $this->checkAndUpdateCmd('state', true);
+      
 
       $hplipCmd = $this->getCmd(null, 'ink1type');
       if (!is_object($hplipCmd)) {
