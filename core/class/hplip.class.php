@@ -127,6 +127,16 @@ class hplip extends eqLogic {
       $hplipCmd->setSubType('other');
       $hplipCmd->save();
 	  }
+      $hplipCmd = $this->getCmd(null, 'state');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Connectée', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('state');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('binary');
+        $hplipCmd->save();
+      }
 
     if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
       
@@ -157,14 +167,27 @@ class hplip extends eqLogic {
 		//log::add('hplip', 'debug', 'test ');
     $hplip_dir = realpath(dirname(__FILE__)) .'/../../data/infos.txt';
 		$hplip_ip = $this->getConfiguration('ip');
-    
-		$hplip_cmd = 'hp-info -i > ' . $hplip_dir;
+    $hplip_uri = $this->getConfiguration('uri');
+    if ($hplip_uri==null || $hplip_uri =='') {
+      $hplip_cmd = 'hp-info -i > ' . $hplip_dir;
+    }
+    else 
+    {
+      $hplip_cmd = 'hp-info -i '. '-d ' . $hplip_uri .' > '. $hplip_dir;
+    }
+		
 		log::add('hplip', 'info', 'Commande refresh');
 		exec($hplip_cmd);
     
-
-    if (exec('grep agent1-desc '. $hplip_dir )!=null) 
+    if (exec('grep agent1-desc '. $hplip_dir )==null) 
     {
+      $this->checkAndUpdateCmd('state', false);
+      return;
+    }
+    else 
+    {
+      $this->checkAndUpdateCmd('state', true);
+
       $hplipCmd = $this->getCmd(null, 'ink1type');
       if (!is_object($hplipCmd)) {
         $hplipCmd = new hplipCmd();
