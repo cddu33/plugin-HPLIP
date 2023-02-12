@@ -292,7 +292,7 @@ class hplip extends eqLogic {
 		exec($hplip_cmd);*/
 
     $hplip_sup = array("agent1-desc", " ");
-    $hplip_data = str_replace($hplip_sup, "", exec('grep agent1-desc '. $hplip_dir));
+    $hplip_data = str_replace($hplip_sup, "", exec('grep agent1-desc '. $hplip_dir .' | head -n 1'));
     $this->checkAndUpdateCmd('ink1type', $hplip_data);
     
     $hplip_sup = array("agent1-level ", " ");
@@ -300,7 +300,7 @@ class hplip extends eqLogic {
     $this->checkAndUpdateCmd('ink1perc', $hplip_data1);
     
     $hplip_sup = array("agent1-health", " ");
-    $hplip_data2 = str_replace($hplip_sup, "", exec('grep agent1-health '. $hplip_dir));
+    $hplip_data2 = str_replace($hplip_sup, "", exec('grep agent1-health '. $hplip_dir .' | head -n 1'));
     $this->checkAndUpdateCmd('ink1state', $hplip_data2);
     log::add('hplip', 'debug', $hplip_dir);
     log::add('hplip', 'debug', 'Agent1: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
