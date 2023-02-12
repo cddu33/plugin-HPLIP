@@ -1,18 +1,21 @@
 # Plugin hplip
 
-Ce "hplip de plugin" sert de base à la réalisation de plugins pour **Jeedom**.
+Plugin Permettant de se connecter sur les imprimantes de maque HP
 
-La documentation générale relative à la conception de plugin est consultable [ici](https://doc.jeedom.com/fr_FR/dev/).
+Pour le moment le plugin récupère l'état des 4 cartouches et si l'imprimante est connectée.
 
-Dans le détail :   
-* [Utilisation du hplip de plugin](https://doc.jeedom.com/fr_FR/dev/plugin_hplip) : Le hplip de plugin est une base de plugin pour Jeedom qui doit être adaptée avec l'id de votre plugin et à laquelle il suffit d'ajouter vos propres fonctions.
+L'actualisation des données peut prendre jusqu'à 30s
 
-* [Fichier info.json](https://doc.jeedom.com/fr_FR/dev/structure_info_json) : Intégré depuis la version 3.0 de Jeedom, le fichier **info.json** est obligatoire pour le bon fonctionnement des plugins et leur bon déploiement sur le Market Jeedom.
+> Attention, le paquet HP pour la connexion aux imprimantes est assez conséquent (170Mo)
 
-* [Icône du plugin](https://doc.jeedom.com/fr_FR/dev/Icone_de_plugin) : Afin de pouvoir être publié sur le Market Jeedom, tout plugin doit disposer d’une icône. Attention à ne pas utiliser le même code couleur que les icônes des plugins Jeedom officiels.
+Pour l'installer:
 
-* [Widget du plugin](https://doc.jeedom.com/fr_FR/dev/widget_plugin) : Présentation des différentes manières d'inclure des widgets personnalisés au plugin.
+* Activer le plugin
 
-* [Documentation du plugin](https://doc.jeedom.com/fr_FR/dev/documentation_plugin) : Présentation de la mise en place d'une documentation car un bon plugin n'est rien sans documentation adéquate.
+* Lancer l'instalaltion des dépendances
 
-* [Publication du plugin](https://doc.jeedom.com/fr_FR/dev/publication_plugin) : Description des pré-requis indispensables à la publication du plugin.
+* Créer un équipement:
+  * Renseigner au minimum son adresse IP
+  * L'actualisation est de base sur 5 min mais vous pouvez la changer depuis le champs "Auto Actualisation"
+  * Sauvegarder l'équipement
+> Cette opération peut durer jusqu'à une minute car l'imprimante est installé et les commandes créées en conséquences
