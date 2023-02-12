@@ -301,20 +301,23 @@ class hplip extends eqLogic {
 		log::add('hplip', 'info', 'Commande refresh');
 		exec($hplip_cmd);*/
     
-    //1
-    $hplip_sup = array("agent1-desc", " ");
-    $hplip_data = str_replace($hplip_sup, "", exec('grep agent1-desc '. $hplip_dir .' | head -n 1'));
-    $this->checkAndUpdateCmd('ink1type', $hplip_data);
-    
-    $hplip_sup = array("agent1-level ", " ");
-    $hplip_data1 = str_replace($hplip_sup, "", exec('grep agent1-level '. $hplip_dir .' | head -n 1'));
-    $this->checkAndUpdateCmd('ink1perc', $hplip_data1);
-    
-    $hplip_sup = array("agent1-health", " ");
-    $hplip_data2 = str_replace($hplip_sup, "", exec('grep agent1-health '. $hplip_dir .' | head -n 1'));
-    $this->checkAndUpdateCmd('ink1state', $hplip_data2);
-    log::add('hplip', 'debug', 'Cartouche1: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
 
+    if (exec('grep agent1-desc '. $hplip_dir )!=null) 
+    {
+      //1
+      $hplip_sup = array("agent1-desc", " ");
+      $hplip_data = str_replace($hplip_sup, "", exec('grep agent1-desc '. $hplip_dir .' | head -n 1'));
+      $this->checkAndUpdateCmd('ink1type', $hplip_data);
+      
+      $hplip_sup = array("agent1-level ", " ");
+      $hplip_data1 = str_replace($hplip_sup, "", exec('grep agent1-level '. $hplip_dir .' | head -n 1'));
+      $this->checkAndUpdateCmd('ink1perc', $hplip_data1);
+      
+      $hplip_sup = array("agent1-health", " ");
+      $hplip_data2 = str_replace($hplip_sup, "", exec('grep agent1-health '. $hplip_dir .' | head -n 1'));
+      $this->checkAndUpdateCmd('ink1state', $hplip_data2);
+      log::add('hplip', 'debug', 'Cartouche1: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
+    }
     //2
     $hplip_sup = array("agent2-desc", " ");
     $hplip_data = str_replace($hplip_sup, "", exec('grep agent2-desc '. $hplip_dir .' | head -n 1'));
