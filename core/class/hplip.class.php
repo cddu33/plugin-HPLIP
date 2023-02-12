@@ -302,7 +302,7 @@ class hplip extends eqLogic {
     $hplip_sup = array("agent1-health", " ");
     $hplip_data2 = str_replace($hplip_sup, "", exec('grep agent1-health '. $hplip_dir));
     $this->checkAndUpdateCmd('ink1state', $hplip_data2);
-
+    log::add('hplip', 'debug', $hplip_dir);
     log::add('hplip', 'debug', 'Agent1: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
 
     
