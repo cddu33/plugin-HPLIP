@@ -127,146 +127,7 @@ class hplip extends eqLogic {
       $hplipCmd->setSubType('other');
       $hplipCmd->save();
 	  }
-    $hplipCmd = $this->getCmd(null, 'ink1type');
-		if (!is_object($hplipCmd)) {
-			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Type Cartouche 1', __FILE__));
-      $hplipCmd->setEqLogic_id($this->getId());
-      $hplipCmd->setLogicalId('ink1type');
-      $hplipCmd->setType('info');
-      $hplipCmd->setSubType('string');
-      $hplipCmd->save();
-	  }
-    $hplipCmd = $this->getCmd(null, 'ink1state');
-		if (!is_object($hplipCmd)) {
-			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Etat Cartouche 1', __FILE__));
-      $hplipCmd->setEqLogic_id($this->getId());
-      $hplipCmd->setLogicalId('ink1state');
-      $hplipCmd->setType('info');
-      $hplipCmd->setSubType('binary');
-      $hplipCmd->setConfiguration('invertBinary', '1');
-      $hplipCmd->save();
-	  }
-    $hplipCmd = $this->getCmd(null, 'ink1perc');
-		if (!is_object($hplipCmd)) {
-			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Pourcentage restant Cartouche 1', __FILE__));
-      $hplipCmd->setEqLogic_id($this->getId());
-      $hplipCmd->setLogicalId('ink1perc');
-      $hplipCmd->setType('info');
-      $hplipCmd->setSubType('numeric');
-      $hplipCmd->setConfiguration('minValue', '0');
-	  	$hplipCmd->setConfiguration('maxValue', '100');
-      $hplipCmd->save();
-	  }
-    $hplipCmd = $this->getCmd(null, 'ink2type');
-		if (!is_object($hplipCmd)) {
-			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Type Cartouche 2', __FILE__));
-      $hplipCmd->setEqLogic_id($this->getId());
-      $hplipCmd->setLogicalId('ink2type');
-      $hplipCmd->setType('info');
-      $hplipCmd->setSubType('string');
-      $hplipCmd->save();
-	  }
-    $hplipCmd = $this->getCmd(null, 'ink2state');
-		if (!is_object($hplipCmd)) {
-			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Etat Cartouche 2', __FILE__));
-      $hplipCmd->setEqLogic_id($this->getId());
-      $hplipCmd->setLogicalId('ink2state');
-      $hplipCmd->setType('info');
-      $hplipCmd->setSubType('binary');
-      $hplipCmd->setConfiguration('invertBinary', '1');
-      $hplipCmd->save();
-	  }
-    $hplipCmd = $this->getCmd(null, 'ink2perc');
-		if (!is_object($hplipCmd)) {
-			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Pourcentage restant Cartouche 2', __FILE__));
-      $hplipCmd->setEqLogic_id($this->getId());
-      $hplipCmd->setLogicalId('ink2perc');
-      $hplipCmd->setType('info');
-      $hplipCmd->setSubType('numeric');
-      $hplipCmd->setConfiguration('minValue', '0');
-	  	$hplipCmd->setConfiguration('maxValue', '100');
-      $hplipCmd->save();
-	  }
-    $hplipCmd = $this->getCmd(null, 'ink3type');
-		if (!is_object($hplipCmd)) {
-			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Type Cartouche 3', __FILE__));
-      $hplipCmd->setEqLogic_id($this->getId());
-      $hplipCmd->setLogicalId('ink3type');
-      $hplipCmd->setType('info');
-      $hplipCmd->setSubType('string');
-      $hplipCmd->save();
-	  }
-    $hplipCmd = $this->getCmd(null, 'ink3state');
-		if (!is_object($hplipCmd)) {
-			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Etat Cartouche 3', __FILE__));
-      $hplipCmd->setEqLogic_id($this->getId());
-      $hplipCmd->setLogicalId('ink3state');
-      $hplipCmd->setType('info');
-      $hplipCmd->setSubType('binary');
-      $hplipCmd->setConfiguration('invertBinary', '1');
-      $hplipCmd->save();
-	  }
-    $hplipCmd = $this->getCmd(null, 'ink3perc');
-		if (!is_object($hplipCmd)) {
-			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Pourcentage restant Cartouche 3', __FILE__));
-      $hplipCmd->setEqLogic_id($this->getId());
-      $hplipCmd->setLogicalId('ink3perc');
-      $hplipCmd->setType('info');
-      $hplipCmd->setSubType('numeric');
-      $hplipCmd->setConfiguration('minValue', '0');
-	  	$hplipCmd->setConfiguration('maxValue', '100');
-      $hplipCmd->save();
-	  }
-    $hplipCmd = $this->getCmd(null, 'ink4type');
-		if (!is_object($hplipCmd)) {
-			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Type Cartouche 4', __FILE__));
-      $hplipCmd->setEqLogic_id($this->getId());
-      $hplipCmd->setLogicalId('ink4type');
-      $hplipCmd->setType('info');
-      $hplipCmd->setSubType('string');
-      $hplipCmd->save();
-	  }
-    $hplipCmd = $this->getCmd(null, 'ink4state');
-		if (!is_object($hplipCmd)) {
-			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Etat Cartouche 4', __FILE__));
-      $hplipCmd->setEqLogic_id($this->getId());
-      $hplipCmd->setLogicalId('ink4state');
-      $hplipCmd->setType('info');
-      $hplipCmd->setSubType('binary');
-      $hplipCmd->setConfiguration('invertBinary', '1');
-      $hplipCmd->save();
-	  }
-    $hplipCmd = $this->getCmd(null, 'ink4perc');
-		if (!is_object($hplipCmd)) {
-			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Pourcentage restant Cartouche 4', __FILE__));
-      $hplipCmd->setEqLogic_id($this->getId());
-      $hplipCmd->setLogicalId('ink4perc');
-      $hplipCmd->setType('info');
-      $hplipCmd->setSubType('numeric');
-      $hplipCmd->save();
-	  }
-    $hplipCmd = $this->getCmd(null, 'name');
-		if (!is_object($hplipCmd)) {
-			$hplipCmd = new hplipCmd();
-		  $hplipCmd->setName(__('Nom', __FILE__));
-      $hplipCmd->setEqLogic_id($this->getId());
-      $hplipCmd->setLogicalId('name');
-      $hplipCmd->setType('info');
-      $hplipCmd->setSubType('string');
-      $hplipCmd->save();
-	  }
+
     if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
       
 
@@ -304,6 +165,40 @@ class hplip extends eqLogic {
 
     if (exec('grep agent1-desc '. $hplip_dir )!=null) 
     {
+      $hplipCmd = $this->getCmd(null, 'ink1type');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Type Cartouche 1', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('ink1type');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('string');
+        $hplipCmd->save();
+      }
+      $hplipCmd = $this->getCmd(null, 'ink1state');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Etat Cartouche 1', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('ink1state');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('binary');
+        $hplipCmd->setConfiguration('invertBinary', '1');
+        $hplipCmd->save();
+      }
+      $hplipCmd = $this->getCmd(null, 'ink1perc');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Pourcentage restant Cartouche 1', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('ink1perc');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('numeric');
+        $hplipCmd->setConfiguration('minValue', '0');
+        $hplipCmd->setConfiguration('maxValue', '100');
+        $hplipCmd->save();
+      }
+
       //1
       $hplip_sup = array("agent1-desc", " ");
       $hplip_data = str_replace($hplip_sup, "", exec('grep agent1-desc '. $hplip_dir .' | head -n 1'));
@@ -321,6 +216,40 @@ class hplip extends eqLogic {
     
     if (exec('grep agent2-desc '. $hplip_dir )!=null) 
     {
+
+      $hplipCmd = $this->getCmd(null, 'ink2type');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Type Cartouche 2', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('ink2type');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('string');
+        $hplipCmd->save();
+      }
+      $hplipCmd = $this->getCmd(null, 'ink2state');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Etat Cartouche 2', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('ink2state');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('binary');
+        $hplipCmd->setConfiguration('invertBinary', '1');
+        $hplipCmd->save();
+      }
+      $hplipCmd = $this->getCmd(null, 'ink2perc');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Pourcentage restant Cartouche 2', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('ink2perc');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('numeric');
+        $hplipCmd->setConfiguration('minValue', '0');
+        $hplipCmd->setConfiguration('maxValue', '100');
+        $hplipCmd->save();
+      }
       //2
       $hplip_sup = array("agent2-desc", " ");
       $hplip_data = str_replace($hplip_sup, "", exec('grep agent2-desc '. $hplip_dir .' | head -n 1'));
@@ -338,6 +267,40 @@ class hplip extends eqLogic {
 
     if (exec('grep agent3-desc '. $hplip_dir )!=null) 
     {
+      $hplipCmd = $this->getCmd(null, 'ink3type');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Type Cartouche 3', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('ink3type');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('string');
+        $hplipCmd->save();
+      }
+      $hplipCmd = $this->getCmd(null, 'ink3state');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Etat Cartouche 3', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('ink3state');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('binary');
+        $hplipCmd->setConfiguration('invertBinary', '1');
+        $hplipCmd->save();
+      }
+      $hplipCmd = $this->getCmd(null, 'ink3perc');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Pourcentage restant Cartouche 3', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('ink3perc');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('numeric');
+        $hplipCmd->setConfiguration('minValue', '0');
+        $hplipCmd->setConfiguration('maxValue', '100');
+        $hplipCmd->save();
+      }
+
       //3
       $hplip_sup = array("agent3-desc", " ");
       $hplip_data = str_replace($hplip_sup, "", exec('grep agent3-desc '. $hplip_dir .' | head -n 1'));
@@ -355,6 +318,49 @@ class hplip extends eqLogic {
 
     if (exec('grep agent4-desc '. $hplip_dir )!=null) 
     {
+
+      $hplipCmd = $this->getCmd(null, 'ink4type');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Type Cartouche 4', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('ink4type');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('string');
+        $hplipCmd->save();
+      }
+      $hplipCmd = $this->getCmd(null, 'ink4state');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Etat Cartouche 4', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('ink4state');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('binary');
+        $hplipCmd->setConfiguration('invertBinary', '1');
+        $hplipCmd->save();
+      }
+      $hplipCmd = $this->getCmd(null, 'ink4perc');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Pourcentage restant Cartouche 4', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('ink4perc');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('numeric');
+        $hplipCmd->save();
+      }
+      $hplipCmd = $this->getCmd(null, 'name');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Nom', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('name');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('string');
+        $hplipCmd->save();
+      }
+
       //4
       $hplip_sup = array("agent4-desc", " ");
       $hplip_data = str_replace($hplip_sup, "", exec('grep agent4-desc '. $hplip_dir .' | head -n 1'));
