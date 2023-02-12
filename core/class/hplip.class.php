@@ -156,11 +156,11 @@ class hplip extends eqLogic {
     set_time_limit(60);
 		//log::add('hplip', 'debug', 'test ');
     $hplip_dir = realpath(dirname(__FILE__)) .'/../../data/infos.txt';
-		/*$hplip_ip = $this->getConfiguration('ip');
+		$hplip_ip = $this->getConfiguration('ip');
     
 		$hplip_cmd = 'hp-info -i > ' . $hplip_dir;
 		log::add('hplip', 'info', 'Commande refresh');
-		exec($hplip_cmd);*/
+		exec($hplip_cmd);
     
 
     if (exec('grep agent1-desc '. $hplip_dir )!=null) 
