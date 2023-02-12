@@ -318,47 +318,57 @@ class hplip extends eqLogic {
       $this->checkAndUpdateCmd('ink1state', $hplip_data2);
       log::add('hplip', 'debug', 'Cartouche1: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
     }
-    //2
-    $hplip_sup = array("agent2-desc", " ");
-    $hplip_data = str_replace($hplip_sup, "", exec('grep agent2-desc '. $hplip_dir .' | head -n 1'));
-    $this->checkAndUpdateCmd('ink2type', $hplip_data);
     
-    $hplip_sup = array("agent2-level ", " ");
-    $hplip_data1 = str_replace($hplip_sup, "", exec('grep agent2-level '. $hplip_dir .' | head -n 1'));
-    $this->checkAndUpdateCmd('ink2perc', $hplip_data1);
-    
-    $hplip_sup = array("agent2-health", " ");
-    $hplip_data2 = str_replace($hplip_sup, "", exec('grep agent2-health '. $hplip_dir .' | head -n 1'));
-    $this->checkAndUpdateCmd('ink2state', $hplip_data2);
-    log::add('hplip', 'debug', 'Cartouche2: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
-  
-    //3
-    $hplip_sup = array("agent3-desc", " ");
-    $hplip_data = str_replace($hplip_sup, "", exec('grep agent3-desc '. $hplip_dir .' | head -n 1'));
-    $this->checkAndUpdateCmd('ink3type', $hplip_data);
-    
-    $hplip_sup = array("agent3-level ", " ");
-    $hplip_data1 = str_replace($hplip_sup, "", exec('grep agent3-level '. $hplip_dir .' | head -n 1'));
-    $this->checkAndUpdateCmd('ink3perc', $hplip_data1);
-    
-    $hplip_sup = array("agent3-health", " ");
-    $hplip_data2 = str_replace($hplip_sup, "", exec('grep agent3-health '. $hplip_dir .' | head -n 1'));
-    $this->checkAndUpdateCmd('ink3state', $hplip_data2);
-    log::add('hplip', 'debug', 'Cartouche3: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
+    if (exec('grep agent2-desc '. $hplip_dir )!=null) 
+    {
+      //2
+      $hplip_sup = array("agent2-desc", " ");
+      $hplip_data = str_replace($hplip_sup, "", exec('grep agent2-desc '. $hplip_dir .' | head -n 1'));
+      $this->checkAndUpdateCmd('ink2type', $hplip_data);
+      
+      $hplip_sup = array("agent2-level ", " ");
+      $hplip_data1 = str_replace($hplip_sup, "", exec('grep agent2-level '. $hplip_dir .' | head -n 1'));
+      $this->checkAndUpdateCmd('ink2perc', $hplip_data1);
+      
+      $hplip_sup = array("agent2-health", " ");
+      $hplip_data2 = str_replace($hplip_sup, "", exec('grep agent2-health '. $hplip_dir .' | head -n 1'));
+      $this->checkAndUpdateCmd('ink2state', $hplip_data2);
+      log::add('hplip', 'debug', 'Cartouche2: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
+    }
 
-    //4
-    $hplip_sup = array("agent4-desc", " ");
-    $hplip_data = str_replace($hplip_sup, "", exec('grep agent4-desc '. $hplip_dir .' | head -n 1'));
-    $this->checkAndUpdateCmd('ink4type', $hplip_data);
-    
-    $hplip_sup = array("agent4-level ", " ");
-    $hplip_data1 = str_replace($hplip_sup, "", exec('grep agent4-level '. $hplip_dir .' | head -n 1'));
-    $this->checkAndUpdateCmd('ink4perc', $hplip_data1);
-    
-    $hplip_sup = array("agent4-health", " ");
-    $hplip_data2 = str_replace($hplip_sup, "", exec('grep agent4-health '. $hplip_dir .' | head -n 1'));
-    $this->checkAndUpdateCmd('ink4state', $hplip_data2);
-    log::add('hplip', 'debug', 'Cartouche4: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
+    if (exec('grep agent3-desc '. $hplip_dir )!=null) 
+    {
+      //3
+      $hplip_sup = array("agent3-desc", " ");
+      $hplip_data = str_replace($hplip_sup, "", exec('grep agent3-desc '. $hplip_dir .' | head -n 1'));
+      $this->checkAndUpdateCmd('ink3type', $hplip_data);
+      
+      $hplip_sup = array("agent3-level ", " ");
+      $hplip_data1 = str_replace($hplip_sup, "", exec('grep agent3-level '. $hplip_dir .' | head -n 1'));
+      $this->checkAndUpdateCmd('ink3perc', $hplip_data1);
+      
+      $hplip_sup = array("agent3-health", " ");
+      $hplip_data2 = str_replace($hplip_sup, "", exec('grep agent3-health '. $hplip_dir .' | head -n 1'));
+      $this->checkAndUpdateCmd('ink3state', $hplip_data2);
+      log::add('hplip', 'debug', 'Cartouche3: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
+    }
+
+    if (exec('grep agent4-desc '. $hplip_dir )!=null) 
+    {
+      //4
+      $hplip_sup = array("agent4-desc", " ");
+      $hplip_data = str_replace($hplip_sup, "", exec('grep agent4-desc '. $hplip_dir .' | head -n 1'));
+      $this->checkAndUpdateCmd('ink4type', $hplip_data);
+      
+      $hplip_sup = array("agent4-level ", " ");
+      $hplip_data1 = str_replace($hplip_sup, "", exec('grep agent4-level '. $hplip_dir .' | head -n 1'));
+      $this->checkAndUpdateCmd('ink4perc', $hplip_data1);
+      
+      $hplip_sup = array("agent4-health", " ");
+      $hplip_data2 = str_replace($hplip_sup, "", exec('grep agent4-health '. $hplip_dir .' | head -n 1'));
+      $this->checkAndUpdateCmd('ink4state', $hplip_data2);
+      log::add('hplip', 'debug', 'Cartouche4: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
+    }
 
     
 	}
