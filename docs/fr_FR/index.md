@@ -12,7 +12,7 @@ Pour l'installer:
 
 * Activer le plugin
 
-* Lancer l'instalaltion des dépendances
+* Lancer l'installation des dépendances
 
 * Créer un équipement:
   * Renseigner au minimum son adresse IP
