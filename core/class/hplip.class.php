@@ -290,41 +290,20 @@ class hplip extends eqLogic {
 		$hplip_cmd = 'hp-info -i > ' . $hplip_dir;
 		log::add('hplip', 'info', 'Commande refresh');
 		exec($hplip_cmd);
+
     $hplip_sup = array("agent1-desc", " ");
     $hplip_data = str_replace($hplip_sup, "", exec('grep agent1-desc '. $hplip_dir));
     $this->checkAndUpdateCmd('ink1type', $hplip_data);
-    //log::add('hplip', 'debug', 'Agent1: '. $hplip_data);
-    $hplip_sup = array("agent1-level", " ");
+    $hplip_sup = array("agent1-level ", " ");
     $hplip_data1 = str_replace($hplip_sup, "", exec('grep agent1-level '. $hplip_dir));
-    $this->checkAndUpdateCmd('ink1state', $hplip_data);
-    log::add('hplip', 'debug', 'Agent1: '. $hplip_data . ' ' . $hplip_data1);
+    $this->checkAndUpdateCmd('ink1perc', $hplip_data1);
+    $hplip_sup = array("agent1-health  ", " ");
+    $hplip_data2 = str_replace($hplip_sup, "", exec('grep agent1-health '. $hplip_dir));
+    $this->checkAndUpdateCmd('ink1state', $hplip_data2);
 
-    $hplip_sup = array("agent2-desc", " ");
-    $hplip_data = str_replace($hplip_sup, "", exec('grep agent2-desc '. $hplip_dir));
-    $this->checkAndUpdateCmd('ink2type', $hplip_data);
-    log::add('hplip', 'debug', 'Agent2: '. $hplip_data);
-    $hplip_sup = array("agent2-level", " ");
-    $hplip_data = str_replace($hplip_sup, "", exec('grep agent2-level '. $hplip_dir));
-    $this->checkAndUpdateCmd('ink2state', $hplip_data);
-    log::add('hplip', 'debug', 'Agent2: '. $hplip_data);
+    log::add('hplip', 'debug', 'Agent1: '. $hplip_data . ', pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
 
-    $hplip_sup = array("agent3-desc", " ");
-    $hplip_data = str_replace($hplip_sup, "", exec('grep agent3-desc '. $hplip_dir));
-    $this->checkAndUpdateCmd('ink3type', $hplip_data);
-    log::add('hplip', 'debug', 'Agent3: '. $hplip_data);
-    $hplip_sup = array("agent3-level", " ");
-    $hplip_data = str_replace($hplip_sup, "", exec('grep agent3-level '. $hplip_dir));
-    $this->checkAndUpdateCmd('ink3state', $hplip_data);
-    log::add('hplip', 'debug', 'Agent3: '. $hplip_data);
-
-    $hplip_sup = array("agent4-desc", " ");
-    $hplip_data = str_replace($hplip_sup, "", exec('grep agent4-desc '. $hplip_dir));
-    $this->checkAndUpdateCmd('ink4type', $hplip_data);
-    log::add('hplip', 'debug', 'Agent4: '. $hplip_data);
-    $hplip_sup = array("agent4-level", " ");
-    $hplip_data = str_replace($hplip_sup, "", exec('grep agent4-level '. $hplip_dir));
-    $this->checkAndUpdateCmd('ink4perc', $hplip_data);
-    log::add('hplip', 'debug', 'Agent4: '. $hplip_data);
+    
 
     
 	}
