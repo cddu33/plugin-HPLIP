@@ -127,6 +127,16 @@ class hplip extends eqLogic {
       $hplipCmd->setSubType('other');
       $hplipCmd->save();
 	  }
+      $hplipCmd = $this->getCmd(null, 'model');
+      if (!is_object($hplipCmd)) {
+        $hplipCmd = new hplipCmd();
+        $hplipCmd->setName(__('Model', __FILE__));
+        $hplipCmd->setEqLogic_id($this->getId());
+        $hplipCmd->setLogicalId('model');
+        $hplipCmd->setType('info');
+        $hplipCmd->setSubType('string');
+        $hplipCmd->save();
+      }
       $hplipCmd = $this->getCmd(null, 'state');
       if (!is_object($hplipCmd)) {
         $hplipCmd = new hplipCmd();
@@ -137,6 +147,7 @@ class hplip extends eqLogic {
         $hplipCmd->setSubType('binary');
         $hplipCmd->save();
       }
+      
 
     if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
       
@@ -176,16 +187,22 @@ class hplip extends eqLogic {
       $hplip_cmd = 'hp-info -i '. '-d ' . $hplip_uri .' > '. $hplip_dir;
     }
 		
-		log::add('hplip', 'info', 'Commande refresh');
+		log::add('hplip', 'debug', 'Commande refresh');
 		exec($hplip_cmd);
     
     if (exec('grep agent1-desc '. $hplip_dir )==null) 
     {
       $this->checkAndUpdateCmd('state', false);
+      log::add('hplip', 'info', 'Imprimante déconnectée');
       return;
     }
-    else 
-    {
+
+    $hplip_sup = array("model-ui", " ");
+    $hplip_data = str_replace($hplip_sup, "", exec('grep model-ui '. $hplip_dir .' | head -n 1'));
+    log::add('hplip', 'debug', 'Model: '. $hplip_data);
+    $this->checkAndUpdateCmd('model', $hplip_data);
+
+      log::add('hplip', 'info', 'Imprimante connectée, actualisation des données');
       $this->checkAndUpdateCmd('state', true);
 
       $hplipCmd = $this->getCmd(null, 'ink1type');
@@ -235,7 +252,7 @@ class hplip extends eqLogic {
       $hplip_data2 = str_replace($hplip_sup, "", exec('grep agent1-health '. $hplip_dir .' | head -n 1'));
       $this->checkAndUpdateCmd('ink1state', $hplip_data2);
       log::add('hplip', 'debug', 'Cartouche1: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
-    }
+
     
     if (exec('grep agent2-desc '. $hplip_dir )!=null) 
     {
@@ -398,6 +415,7 @@ class hplip extends eqLogic {
       $this->checkAndUpdateCmd('ink4state', $hplip_data2);
       log::add('hplip', 'debug', 'Cartouche4: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
     }
+
 
     
 	}
