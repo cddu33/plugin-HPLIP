@@ -2,19 +2,19 @@
 	"id" : "hplip",
 	"name" : "Imprimantes HP",
 	"description" : {
-		"fr_FR": "Plugin permetant de se connecter aux imprimantes de marque HP, récupération du niveau d encre."
+		"fr_FR": "Plugin permetant de se connecter aux imprimantes de marque HP, récupération du niveau d encre et de la connexion"
 	},
 	"licence" : "AGPL",
 	"author" : "Jeedom SAS",
-	"require" : "4.2.0",
+	"require" : "4.0.0",
 	"category" : "devicecommunication",
 	"hasDependency" : true,
 	"hasOwnDeamon" : false,
 	"maxDependancyInstallTime" : 0,
-	"changelog" : "https://jeedom.github.io/plugin-template/#language#/changelog",
-	"documentation" : "https://jeedom.github.io/plugin-template/#language#/",
-	"changelog_beta" : "https://jeedom.github.io/plugin-template/#language#/beta/changelog",
-	"documentation_beta" : "https://jeedom.github.io/plugin-template/#language#/beta/",
+	"changelog" : "https://github.com/cddu33/plugin-HPLIP/#language#/changelog",
+	"documentation" : "https://github.com/cddu33/plugin-HPLIP/#language#/",
+	"changelog_beta" : "https://github.com/cddu33/plugin-HPLIP/#language#/beta/changelog",
+	"documentation_beta" : "https://github.com/cddu33/plugin-HPLIP/#language#/",
 	"link" : {
 		"forum":"Lien vers le forum"
 	},
