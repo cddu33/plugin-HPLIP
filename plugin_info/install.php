@@ -18,18 +18,15 @@
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 // Fonction exécutée automatiquement après l'installation du plugin
-function hplip_install() {
-    foreach (eqLogic::byType('hplip') as $eqLogic) {
-        $eqLogic->save();
-        log::add('hplip', 'debug', 'Mise à jour des commandes effectuée pour l\'équipement '. $eqLogic->getHumanName());
-    }
-}
+function hplip_install() {}
 
 // Fonction exécutée automatiquement après la mise à jour du plugin
 function hplip_update() {
     foreach (eqLogic::byType('hplip') as $eqLogic) {
         $eqLogic->save();
         log::add('hplip', 'debug', 'Mise à jour des commandes effectuée pour l\'équipement '. $eqLogic->getHumanName());
+        $eqlogic->refresh();
+  }
     }
 }
 
