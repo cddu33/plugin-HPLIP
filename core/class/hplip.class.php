@@ -178,7 +178,7 @@ class hplip extends eqLogic {
   public function postRemove() {}
 
   public function refresh() {
-    set_time_limit(60);
+    set_time_limit(40);
     $hplip_id = $this->getConfiguration('idimp');
     $hplip_dir = realpath(dirname(__FILE__)) .'/../../data/infos'. $hplip_id . '.txt';
 		$hplip_ip = $this->getConfiguration('ip');
