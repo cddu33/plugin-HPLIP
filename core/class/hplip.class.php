@@ -230,7 +230,7 @@ class hplip extends eqLogic {
         $hplipCmd->setType('info');
         $hplipCmd->setSubType('binary');
         $hplipCmd->setConfiguration('invertBinary', '1');
-        $hplipCmd->setOrder(2);
+        $hplipCmd->setOrder(5);
         $hplipCmd->save();
       }
       $hplipCmd = $this->getCmd(null, 'ink1perc');
