@@ -149,6 +149,7 @@ class hplip extends eqLogic {
         $hplipCmd->setOrder(3);
         $hplipCmd->save();
       }
+      $this->refresh()
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -167,7 +168,8 @@ class hplip extends eqLogic {
 
 		
 		log::add('hplip', 'debug', 'Lancement de l\'actualisation');
-    log::add('hplip', 'debug', $hplip_infos->asXML());
+    log::add('hplip', 'debug', $hplip_infos['pudyn:ProductUsageDyn'].['dd:Version'].['dd:Date']);
+    
     
     /*f (exec('grep agent1-desc '. $hplip_dir )==null) 
     {
