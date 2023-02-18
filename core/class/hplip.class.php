@@ -173,8 +173,8 @@ class hplip extends eqLogic {
     log::add('hplip', 'debug', 'Lancement de l\'actualisation vv ' . $hplip_cmd);
     $hplip_infos = file_get_contents(urlencode($hplip_cmd));
     $hplip_json = json_encode($hplip_infos);
-    //$hplip_array = json_decode($hplip_json,TRUE);
-    fwrite($hplip_json, realpath(dirname(__FILE__)) .'/../../data/test.json');
+    $hplip_array = json_decode($hplip_json,TRUE);
+    fwrite(hplip_array, realpath(dirname(__FILE__)) .'/../../data/test.json');
 		
     
     
