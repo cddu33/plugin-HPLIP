@@ -178,7 +178,7 @@ class hplip extends eqLogic {
 
 
 
-    log::add('hplip', 'debug', 'Lancement de l\'actualisation ' . $hplip_cmd);
+    log::add('hplip', 'debug', 'Lancement de l\'actualisation vv ' . $hplip_cmd);
    // $hplip_infos = file_get_contents($hplip_cmd);
     $hplip_json = json_encode($hplip_infos);
     //$hplip_array = json_decode($hplip_json,TRUE);
