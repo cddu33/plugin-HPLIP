@@ -166,9 +166,8 @@ class hplip extends eqLogic {
     $hplip_infos = simplexml_load_file($hplip_cmd);
     $hplip_json = json_encode($hplip_infos);
     $hplip_array = json_decode($hplip_json,TRUE);
-		
+    file_put_contents(realpath(dirname(__FILE__)) .'/../../data/infos/test.json',$hplip_array);
 		log::add('hplip', 'debug', 'Lancement de l\'actualisation');
-    log::add('hplip', 'debug', $hplip_array);
     
     
     /*f (exec('grep agent1-desc '. $hplip_dir )==null) 
