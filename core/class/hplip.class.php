@@ -163,11 +163,11 @@ class hplip extends eqLogic {
     set_time_limit(40);
 		$hplip_ip = $this->getConfiguration('ip');
     $hplip_cmd = "http://". $hplip_ip ."/DevMgmt/ProductUsageDyn.xml";
-    $hplip_infos = simplexml_load_file($hplip_cmd);;
+    $hplip_infos = simplexml_load_file($hplip_cmd);
 
 		
 		log::add('hplip', 'debug', 'Lancement de l\'actualisation');
-    log::add('hplip', 'debug', $hplip_infos);
+    log::add('hplip', 'debug', $hplip_infos->asXML());
     
     /*f (exec('grep agent1-desc '. $hplip_dir )==null) 
     {
