@@ -149,7 +149,7 @@ class hplip extends eqLogic {
         $hplipCmd->setOrder(3);
         $hplipCmd->save();
       }
-      $this->refresh()
+      $this->refresh();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -161,7 +161,6 @@ class hplip extends eqLogic {
   public function postRemove() {}
 
   public function refresh() {
-    set_time_limit(40);
 		$hplip_ip = $this->getConfiguration('ip');
     $hplip_cmd = "http://". $hplip_ip ."/DevMgmt/ProductUsageDyn.xml";
     $hplip_infos = simplexml_load_file($hplip_cmd);
