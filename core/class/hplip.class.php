@@ -168,7 +168,7 @@ class hplip extends eqLogic {
     $hplip_infos->load($hplip_cmd);
    // $hplip_json = json_encode($hplip_infos);
     //$hplip_array = json_decode($hplip_json,TRUE);
-    file_put_contents(realpath(dirname(__FILE__)) .'/../../data/test.json',$hplip_infos);
+    fwrite(realpath(dirname(__FILE__)) .'/../../data/test.json', $hplip_infos);
 		
     
     
