@@ -162,9 +162,24 @@ class hplip extends eqLogic {
 
   public function refresh() {
 		$hplip_ip = $this->getConfiguration('ip');
+
+
+
     $hplip_cmd = 'http://'. $hplip_ip .'/DevMgmt/ProductUsageDyn.xml';
+
+    $hplip_options = array(
+      'http' => array(
+          'protocol_version' => '1.0',
+          'method' => 'GET'
+      )
+  );
+  $hplip_context = stream_context_create($hplip_options);
+  $hplip_infos = file_get_contents($hplip_cmd, false, $hplip_context);
+
+
+
     log::add('hplip', 'debug', 'Lancement de l\'actualisation ' . $hplip_cmd);
-    $hplip_infos = file_get_contents($hplip_cmd);
+   // $hplip_infos = file_get_contents($hplip_cmd);
     $hplip_json = json_encode($hplip_infos);
     //$hplip_array = json_decode($hplip_json,TRUE);
     fwrite($hplip_json, realpath(dirname(__FILE__)) .'/../../data/test.json');
