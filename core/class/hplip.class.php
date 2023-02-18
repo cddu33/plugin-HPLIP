@@ -164,7 +164,7 @@ class hplip extends eqLogic {
 		$hplip_ip = $this->getConfiguration('ip');
     $hplip_cmd = 'http://'. $hplip_ip .'/DevMgmt/ProductUsageDyn.xml';
     log::add('hplip', 'debug', 'Lancement de l\'actualisation ' . $hplip_cmd);
-    $hplip_infos = load($hplip_cmd);
+    $hplip_infos->load($hplip_cmd);
     $hplip_json = json_encode($hplip_infos);
     $hplip_array = json_decode($hplip_json,TRUE);
     file_put_contents(realpath(dirname(__FILE__)) .'/../../data/test.json',$hplip_array);
