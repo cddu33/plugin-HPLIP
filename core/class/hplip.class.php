@@ -162,12 +162,13 @@ class hplip extends eqLogic {
 
   public function refresh() {
 		$hplip_ip = $this->getConfiguration('ip');
-    $hplip_cmd = "http://". $hplip_ip ."/DevMgmt/ProductUsageDyn.xml";
-    $hplip_infos = simplexml_load_file($hplip_cmd);
+    $hplip_cmd = 'http://'. $hplip_ip .'/DevMgmt/ProductUsageDyn.xml';
+    log::add('hplip', 'debug', 'Lancement de l\'actualisation ' . $hplip_cmd);
+    $hplip_infos = load($hplip_cmd);
     $hplip_json = json_encode($hplip_infos);
     $hplip_array = json_decode($hplip_json,TRUE);
     file_put_contents(realpath(dirname(__FILE__)) .'/../../data/test.json',$hplip_array);
-		log::add('hplip', 'debug', 'Lancement de l\'actualisation');
+		
     
     
     /*f (exec('grep agent1-desc '. $hplip_dir )==null) 
