@@ -167,7 +167,7 @@ class hplip extends eqLogic {
 
 		
 		log::add('hplip', 'debug', 'Lancement de l\'actualisation');
-    log::add('hplip', 'debug', $hplip_infos['pudyn:ProductUsageDyn'].['dd:Version'].['dd:Date']);
+    log::add('hplip', 'debug', $hplip_infos['pudyn:ProductUsageDyn']['dd:Version']['dd:Date']);
     
     
     /*f (exec('grep agent1-desc '. $hplip_dir )==null) 
