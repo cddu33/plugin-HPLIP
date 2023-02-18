@@ -22,6 +22,7 @@ function hplip_install() {}
 
 // Fonction exécutée automatiquement après la mise à jour du plugin
 function hplip_update() {
+    exec('sudo apt-get autoremove hplip -y');
     foreach (eqLogic::byType('hplip') as $eqLogic) {
         $eqLogic->save();
         log::add('hplip', 'debug', 'Mise à jour des commandes effectuée pour l\'équipement '. $eqLogic->getHumanName());
@@ -32,4 +33,5 @@ function hplip_update() {
 
 // Fonction exécutée automatiquement après la suppression du plugin
 function hplip_remove() {
+    exec('sudo apt-get autoremove hplip -y');
 }

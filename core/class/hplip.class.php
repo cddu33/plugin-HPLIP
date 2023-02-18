@@ -149,29 +149,11 @@ class hplip extends eqLogic {
         $hplipCmd->setOrder(3);
         $hplipCmd->save();
       }
-      
-
-    if ($this->getConfiguration('ip')!="" && $this->getConfiguration('installer')!='OK') {
-      
-        $installation=exec('sudo hp-setup -i -a -x ' . hplip::getConfiguration("ip") . ' && 2 | grep TEST');
-      if ($installation!="") {
-        $this->setConfiguration('installer', 'OK');
-        $this->setConfiguration('idimp', time());
-        $this->save();
-        log::add('hplip', 'info', 'Imprimante Installée');
-        
-        $this->refresh();
-      }
-      else{
-        log::add('hplip', 'error', 'Problème lors de l\'installation de l\'imprimante, vérifier qu\'elle est bien alimentée et que l\'adresse IP rentrée dans le plugin est valide');
-      }
-    }
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
   public function preRemove() {
-    exec('sudo hp-setup -i -a -r ' . hplip::getConfiguration("ip"));
-    log::add('hplip', 'info', 'Imprimante désinstallée');
+    
   }
 
   // Fonction exécutée automatiquement après la suppression de l'équipement
@@ -179,22 +161,15 @@ class hplip extends eqLogic {
 
   public function refresh() {
     set_time_limit(40);
-    $hplip_id = $this->getConfiguration('idimp');
-    $hplip_dir = realpath(dirname(__FILE__)) .'/../../data/infos'. $hplip_id . '.txt';
 		$hplip_ip = $this->getConfiguration('ip');
-    $hplip_uri = $this->getConfiguration('uri');
-    if ($hplip_uri==null || $hplip_uri =='') {
-      $hplip_cmd = 'hp-info -i > ' . $hplip_dir;
-    }
-    else 
-    {
-      $hplip_cmd = 'hp-info -i '. '-d ' . $hplip_uri .' > '. $hplip_dir;
-    }
+    $hplip_cmd = "http://". $hplip_ip ."/DevMgmt/ProductUsageDyn.xml";
+    $hplip_infos = simplexml_load_file($hplip_cmd);;
+
 		
-		log::add('hplip', 'debug', 'Lancement de l\'actualisation, environ 30s');
-		exec($hplip_cmd);
+		log::add('hplip', 'debug', 'Lancement de l\'actualisation');
+    log::add('hplip', $hplip_infos);
     
-    if (exec('grep agent1-desc '. $hplip_dir )==null) 
+    /*f (exec('grep agent1-desc '. $hplip_dir )==null) 
     {
       $this->checkAndUpdateCmd('state', false);
       log::add('hplip', 'info', 'Imprimante déconnectée');
@@ -424,7 +399,7 @@ class hplip extends eqLogic {
       log::add('hplip', 'debug', 'Cartouche4: '. $hplip_data . ', Pourcentage:  ' . $hplip_data1 . ', Etat: ' . $hplip_data2);
     }
 
-
+*/
     
 	}
   /*

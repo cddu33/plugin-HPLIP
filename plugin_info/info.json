@@ -8,7 +8,7 @@
 	"author" : "Jeedom SAS",
 	"require" : "4.0.0",
 	"category" : "devicecommunication",
-	"hasDependency" : true,
+	"hasDependency" : false,
 	"hasOwnDeamon" : false,
 	"maxDependancyInstallTime" : 0,
 	"changelog" : "https://cddu33.github.io/plugin-HPLIP/#language#/changelog",
