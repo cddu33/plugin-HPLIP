@@ -169,7 +169,7 @@ class hplip extends eqLogic {
 
     $hplip_options = array(
       'http' => array(
-          'protocol_version' => '1.0',
+          'protocol_version' => '1.1',
           'method' => 'GET'
       )
   );
