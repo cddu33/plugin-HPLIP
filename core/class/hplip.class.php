@@ -167,7 +167,7 @@ class hplip extends eqLogic {
     
     $hplip_cmd = 'http://'. $hplip_ip .'/DevMgmt/ProductUsageDyn.xml';
     log::add('hplip', 'debug', 'Lancement de l\'actualisation  ' . $hplip_cmd);
-    $titre = simplexml_load_string($hplip_cmd)
+    $titre = simplexml_load_string($hplip_cmd);
     log::add('hplip', 'debug', 'convertion xml ' .  $titre);
     
 
