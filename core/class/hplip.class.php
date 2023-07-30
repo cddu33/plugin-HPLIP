@@ -173,7 +173,7 @@ class hplip extends eqLogic {
     //fwrite($hplip_infos, realpath(dirname(__FILE__)) .'/../../data/test.xml');
     //$parametres = simplexml_load_file(realpath(dirname(__FILE__)) .'/../../data/test.xml');
     $parametres = simplexml_load_string($hplip_infos);
- 
+    log::add('hplip', 'debug', 'brut avant ' .  $parametres);
     list($site_root) = $parametres->xpath("parametre[@name='pudyn:ConsumableSubunit']");
     log::add('hplip', 'debug', 'brut' .  $site_root);
         
