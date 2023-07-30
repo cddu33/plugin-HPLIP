@@ -166,16 +166,10 @@ class hplip extends eqLogic {
 
     
     $hplip_cmd = 'http://'. $hplip_ip .'/DevMgmt/ProductUsageDyn.xml';
-    $dom = new DOMDocument();
-    $dom->load($hplip_cmd);
-    $dom = $dom->documentElement;
-    $itemList = $dom->getElementsByTagName('pudyn:UsageByMarkingAgent');
-    log::add('hplip', 'item list ' .  $itemList);
-    foreach ($itemList as $item) {
-      log::add('hplip', 'item ' .  $item);
-    $titre = $item->getElementsByTagName('dd2:CumulativeMarkingAgentUsed');
+    log::add('hplip', 'debug', 'Lancement de l\'actualisation  ' . $hplip_cmd);
+    $titre = simplexml_load_string($hplip_cmd)
     log::add('hplip', 'debug', 'convertion xml ' .  $titre);
-    }
+    
 
 
     // log::add('hplip', 'debug', 'Lancement de l\'actualisation  ' . $hplip_cmd);
