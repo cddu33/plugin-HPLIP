@@ -172,7 +172,7 @@ class hplip extends eqLogic {
     $itemList = $dom->getElementsByTagName('pudyn:UsageByMarkingAgent');
     
     foreach ($itemList as $item) {
-    
+      log::add('hplip', 'item ' .  $item);
     $titre = $item->getElementsByTagName('dd2:CumulativeMarkingAgentUsed');
     log::add('hplip', 'debug', 'convertion xml ' .  $titre);
     }
