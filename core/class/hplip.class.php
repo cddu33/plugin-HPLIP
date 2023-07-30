@@ -164,33 +164,31 @@ class hplip extends eqLogic {
 		$hplip_ip = $this->getConfiguration('ip');
 
 
-
-    $hplip_cmd = 'http://'. $hplip_ip .'/DevMgmt/ProductUsageDyn.xml';
-
-    $fichier = 'TV.xml';
-    $dom = new DOMDocument;
-    if (!$dom->load($hplip_cmd )) {die('Impossible de charger le fichier XML');}
     
+    $hplip_cmd = 'http://'. $hplip_ip .'/DevMgmt/ProductUsageDyn.xml';
+    $dom = new DOMDocument();
+    $dom->load($hplip_cmd);
+    $dom = $dom->documentElement;
     $itemList = $dom->getElementsByTagName('pudyn:UsageByMarkingAgent');
     
     foreach ($itemList as $item) {
     
     $titre = $item->getElementsByTagName('dd2:CumulativeMarkingAgentUsed');
     log::add('hplip', 'debug', 'convertion xml ' .  $titre);
-    // $titreaa = iconv("UTF-8", "ISO-8859-1", $titre->item(0)->nodeValue);
-    // $link = $item->getElementsByTagName('link');
+    }
+
 
     // log::add('hplip', 'debug', 'Lancement de l\'actualisation  ' . $hplip_cmd);
     // $hplip_context = stream_context_create(array('http' => array('ignore_errors' => true),));
     // $hplip_infos = file_get_contents($hplip_cmd, false, $hplip_context);
     // log::add('hplip', 'debug', 'avant conversion' .   $hplip_context);
-    // $parametres = simplexml_load_string($hplip_context);
+    // $parametres = simplexml_load_string( $hplip_context);
     // log::add('hplip', 'debug', 'convertion xml ' .  $parametres);
     //list($site_root) = $parametres->xpath("parametre[@name='pudyn:ConsumableSubunit']");
    // log::add('hplip', 'debug', 'brut' .  $site_root);
         
-    }
-  }
+		
+    
     
     /*f (exec('grep agent1-desc '. $hplip_dir )==null) 
     {
