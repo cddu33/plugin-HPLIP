@@ -170,11 +170,12 @@ class hplip extends eqLogic {
     log::add('hplip', 'debug', 'Lancement de l\'actualisation  ' . $hplip_cmd);
     $hplip_context = stream_context_create(array('http' => array('ignore_errors' => true),));
     $hplip_infos = file_get_contents($hplip_cmd, false, $hplip_context);
-    
-    $hplip_json = json_encode($hplip_infos);
-    log::add('hplip', 'debug', 'brut' .  $hplip_json);
-    $hplip_array = json_decode($hplip_json,TRUE);
-    fwrite($hplip_array, realpath(dirname(__FILE__)) .'/../../data/test.json');
+    fwrite($hplip_infos, realpath(dirname(__FILE__)) .'/../../data/test.xml');
+    $parametres = simplexml_load_file(realpath(dirname(__FILE__)) .'/../../data/test.xml');
+ 
+    list($site_root) = $parametres->xpath("parametre[@name='pudyn:ConsumableSubunit']");
+    log::add('hplip', 'debug', 'brut' .  $site_root);
+        
 		
     
     
