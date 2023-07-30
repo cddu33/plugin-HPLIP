@@ -189,7 +189,7 @@ class hplip extends eqLogic {
     //list($site_root) = $parametres->xpath("parametre[@name='pudyn:ConsumableSubunit']");
    // log::add('hplip', 'debug', 'brut' .  $site_root);
         
-		
+    }
     
     
     /*f (exec('grep agent1-desc '. $hplip_dir )==null) 
