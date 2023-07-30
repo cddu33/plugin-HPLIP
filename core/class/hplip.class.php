@@ -190,7 +190,7 @@ class hplip extends eqLogic {
    // log::add('hplip', 'debug', 'brut' .  $site_root);
         
     }
-    
+  }
     
     /*f (exec('grep agent1-desc '. $hplip_dir )==null) 
     {
